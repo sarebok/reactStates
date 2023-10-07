@@ -1,13 +1,17 @@
 import React from "react";
+import "../components/SocialButton.css";
 
-const SocialButton = ({ ig, face }) => {
+const SocialButton = ({ ig, face, github }) => {
   return (
     <div className="btn-container">
       <div>
-        <p>{ig}</p>
+        <p className="icon">{ig}</p>
       </div>
       <div>
-        <p>{face}</p>
+        <p className="icon">{face}</p>
+      </div>
+      <div>
+        <p className="icon">{github}</p>
       </div>
     </div>
   );
