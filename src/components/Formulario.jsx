@@ -22,22 +22,16 @@ const Formulario = () => {
   };
   const validateForm = (e) => {
     e.preventDefault();
-    if (!nombre) {
-      resetData();
-      setOk(false);
-      return setResult("Ingresa tu nombre");
-    }
+    /* Validar email a traves de onSubmit */
     if (!email) {
       resetData();
       setOk(false);
       return setResult("Ingresa un email valido");
     }
-    if (!pass) {
-      resetData();
-      setOk(false);
-      return setResult("Ingresa un password");
+    {
+      /* Validar que las contraseñas sean iguales */
     }
-    if (pass != passConf) {
+    if (pass !== passConf) {
       resetData();
       setOk(false);
       return setResult("Los passwords no coinciden");
@@ -51,19 +45,17 @@ const Formulario = () => {
       {/* Relacionarlos con evento onChange */}
       <form onSubmit={validateForm}>
         <label htmlFor="input-text">Nombre</label>
-        <input className="formulario" type="text" id="input-text" onChange={(e) => setNombre(e.target.value)} value={nombre} />
+        <input className="formulario" type="text" id="input-text" onChange={(e) => setNombre(e.target.value)} value={nombre} required />
         <label htmlFor="input-email">Email</label>
-        <input className="formulario" type="email" id="input-email" onChange={(e) => setEmail(e.target.value)} value={email} />
+        <input className="formulario" type="email" id="input-email" onChange={(e) => setEmail(e.target.value)} value={email} required />
         <label htmlFor="input-pass">Password</label>
-        <input className="formulario" type="password" id="input-pass" onChange={(e) => setPass(e.target.value)} value={pass} />
+        <input className="formulario" type="password" id="input-pass" onChange={(e) => setPass(e.target.value)} value={pass} required />
         <label htmlFor="input-pass-conf">Re ingresa Password</label>
-        <input className="formulario" type="password" id="input-pass-conf" onChange={(e) => setPassConf(e.target.value)} value={passConf} />
+        <input className="formulario" type="password" id="input-pass-conf" onChange={(e) => setPassConf(e.target.value)} value={passConf} required />
         {/* Incluir boton para procesar formulario */}
         <button type="submit">Registrarse</button>
       </form>
 
-      {/* Validar email a traves de onSubmit */}
-      {/* Validar que las contraseñas sean iguales */}
       <Alert usuario={nombre} mensaje={result} estado={ok}></Alert>
     </div>
   );

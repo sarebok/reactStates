@@ -1,13 +1,9 @@
 import React from "react";
 import SocialButton from "./SocialButton";
 import Formulario from "./Formulario";
-import { useState } from "react";
 import "./Registro.css";
-import ReactDOM from "react-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faInstagram } from "@fortawesome/free-brands-svg-icons";
-import { faFacebookF } from "@fortawesome/free-brands-svg-icons";
-import { faGithub } from "@fortawesome/free-brands-svg-icons";
+import { faInstagram, faFacebookF, faGithub } from "@fortawesome/free-brands-svg-icons";
 //faSquareInstagram
 
 const Registro = () => {
