@@ -12,16 +12,37 @@ const Formulario = () => {
   const [pass, setPass] = useState("");
   const [passConf, setPassConf] = useState("");
   const [result, setResult] = useState("");
+  const [ok, setOk] = useState(false);
 
+  const resetData = () => {
+    setNombre("");
+    setEmail("");
+    setPass("");
+    setPassConf("");
+  };
   const validateForm = (e) => {
     e.preventDefault();
-    if (!nombre || !email || !pass || pass != passConf) {
-      setNombre("");
-      setEmail("");
-      setPass("");
-      setPassConf("");
-      return setResult("verifica los datos");
+    if (!nombre) {
+      resetData();
+      setOk(false);
+      return setResult("Ingresa tu nombre");
     }
+    if (!email) {
+      resetData();
+      setOk(false);
+      return setResult("Ingresa un email valido");
+    }
+    if (!pass) {
+      resetData();
+      setOk(false);
+      return setResult("Ingresa un password");
+    }
+    if (pass != passConf) {
+      resetData();
+      setOk(false);
+      return setResult("Los passwords no coinciden");
+    }
+    setOk(true);
     return setResult("Acceso correcto");
   };
   return (
@@ -43,7 +64,7 @@ const Formulario = () => {
 
       {/* Validar email a traves de onSubmit */}
       {/* Validar que las contraseñas sean iguales */}
-      <Alert mensaje={result}></Alert>
+      <Alert usuario={nombre} mensaje={result} estado={ok}></Alert>
     </div>
   );
 };
